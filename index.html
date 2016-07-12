@@ -15,7 +15,7 @@
       height: 100%;
       overflow: hidden;
     }
-    h1{
+    h1, span{
       color: #fff;
       text-shadow: #7a7a7a 4px 3px 0;
       font-size: 120px;
@@ -31,14 +31,25 @@
       text-align: center;
       width: 100%;
       left: 50%;
+      margin-top: 2%;
       transform: translate(-50%, 0);
       overflow: hidden;
+    }
+    .text{
+      display: flex;
+      justify-content: center;
+    }
+    .text h1{
+      padding-right: 2%;
     }
   </style>
   <body>
     <div class="content">
-      <center><h1>Welcome to Day <span>1</span></h1>
-      <img src="academy_logo.png" alt="DFA Logo" /></center>
+      <div class="text">
+        <h1>Welcome to Day</h1>
+        <span>1</span>
+      </div>
+      <img src="academy_logo.png" alt="DFA Logo" />
     </div>
     <canvas id="canvas"></canvas>
   </body>
@@ -120,6 +131,11 @@
     var day13 = new Date("07/29/2016");
     var day14 = new Date("07/30/2016");
 
+    if(todaysDate < day1){
+      $("h1").text("Days Remaining:  ");
+      console.log(todaysDate.getDate());
+      $("span").text( 17 - parseInt(todaysDate.getDate()) );
+    }
     if (day1.setHours(0,0,0,0) == todaysDate.setHours(0,0,0,0)){
       $("span").text("1");
     }
