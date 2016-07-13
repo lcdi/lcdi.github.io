@@ -3,6 +3,7 @@
   <head>
     <meta charset="utf-8">
     <title>Welcome!</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" media="screen" title="no title" charset="utf-8">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" media="screen" title="no title" charset="utf-8">
   </head>
   <style media="screen">
@@ -42,6 +43,24 @@
     .text h1{
       padding-right: 2%;
     }
+    .container{
+      position: fixed;
+      top: 25%;
+      left: 4%;
+      width: 400px;
+      z-index: 3;
+      color: white;
+    }
+    .schedule{
+      color: white;
+    }
+    .description{
+      display: flex;
+      justify-content: flex-start;
+    }
+    .list-group{
+      font-size: 15px;
+    }
   </style>
   <body>
     <div class="content">
@@ -52,10 +71,19 @@
       <img src="academy_logo.png" alt="DFA Logo" />
     </div>
     <canvas id="canvas"></canvas>
+
+
+    <div class="topics">
+
+    </div>
   </body>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/ocanvas/2.8.4/ocanvas.min.js" charset="utf-8"></script>
   <script type="text/javascript">
+    $.getJSON("/schedules/day0.json", function(json) {
+      console.log(json); // this will show the info it in firebug console
+    });
+    $(".list-group").append("<a href='#' class='list-group-item'><i class='fa fa-clock-o' aria-hidden='true'></i> Time <br> Description <br> <i class='fa fa-map-marker' aria-hidden='true'></i> Location</a>")
     jQuery(document).ready(function($){
 
     var windowXArray = [],
@@ -132,7 +160,7 @@
     var day14 = new Date("07/30/2016");
 
     if(todaysDate < day1){
-      $("h1").text("Days Remaining:  ");
+      $("h1").text("Days Until DFCS:  ");
       console.log(todaysDate.getDate());
       $("span").text( 17 - parseInt(todaysDate.getDate()) );
     }
