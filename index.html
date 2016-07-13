@@ -71,7 +71,14 @@
       <img src="academy_logo.png" alt="DFA Logo" />
     </div>
     <canvas id="canvas"></canvas>
+    <div class="container">
+      <h2>Today's Schedule</h2>
+      <div class="schedule">
+        <div class="list-group">
 
+        </div>
+      </div>
+    </div>
 
     <div class="topics">
 
@@ -79,11 +86,9 @@
   </body>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/ocanvas/2.8.4/ocanvas.min.js" charset="utf-8"></script>
+  <script src="google.js" charset="utf-8"></script>
   <script type="text/javascript">
-    $.getJSON("/schedules/day0.json", function(json) {
-      console.log(json); // this will show the info it in firebug console
-    });
-    $(".list-group").append("<a href='#' class='list-group-item'><i class='fa fa-clock-o' aria-hidden='true'></i> Time <br> Description <br> <i class='fa fa-map-marker' aria-hidden='true'></i> Location</a>")
+    $(".container h2").hide();
     jQuery(document).ready(function($){
 
     var windowXArray = [],
@@ -143,7 +148,7 @@
     $(window).resize();
 
     });
-    var todaysDate = new Date();
+    var todaysDate = new Date("07/17/2016");
     var day1 = new Date("07/17/2016");
     var day2 = new Date("07/18/2016");
     var day3 = new Date("07/19/2016");
@@ -159,52 +164,87 @@
     var day13 = new Date("07/29/2016");
     var day14 = new Date("07/30/2016");
 
+    var zero = {
+      "a":{
+        "time": "12pm-2:30pm",
+        "description": "Move In",
+        "location": "Butler Hall"
+      },
+      "b":{
+        "time": "2:30pm-5:30pm",
+        "description": "Orientation",
+        "location": "Morgan Room"
+      },
+      "c":{
+        "time": "5:30pm-6:30pm",
+        "description": "Dinner",
+        "location": "Dining Hall"
+      },
+      "d":{
+        "time": "7:00pm-11:00pm",
+        "description": "Ice Breakers",
+        "location": "Butler Hall"
+      },
+      "e":{
+        "time": "11:00pm",
+        "description": "Lights Out",
+        "location": "Butler Hall"
+      }
+    };
+
+    var today = {};
+
     if(todaysDate < day1){
-      $("h1").text("Days Until DFCS:  ");
+      $("h1").text("Days Until DFCS Academy:  ");
       console.log(todaysDate.getDate());
       $("span").text( 17 - parseInt(todaysDate.getDate()) );
     }
     if (day1.setHours(0,0,0,0) == todaysDate.setHours(0,0,0,0)){
-      $("span").text("1");
+      $("span").text("0");
+      $(".container h2").show();
+      Object.keys(zero).forEach(function(key){
+         console.log(key, zero[key]);
+         $(".list-group").append("<a href='#' class='list-group-item'><i class='fa fa-clock-o' aria-hidden='true'></i> " + zero[key].time + " <br> " + zero[key].description + " <br> <i class='fa fa-map-marker' aria-hidden='true'></i> " + zero[key].location + " </a>");
+      });
     }
     if (day2.setHours(0,0,0,0) == todaysDate.setHours(0,0,0,0)){
-      $("span").text("2");
+      $("span").text("1");
     }
     if (day3.setHours(0,0,0,0) == todaysDate.setHours(0,0,0,0)){
-      $("span").text("3");
+      $("span").text("2");
     }
     if (day4.setHours(0,0,0,0) == todaysDate.setHours(0,0,0,0)){
-      $("span").text("4");
+      $("span").text("3");
     }
     if (day5.setHours(0,0,0,0) == todaysDate.setHours(0,0,0,0)){
-      $("span").text("5");
+      $("span").text("4");
     }
     if (day6.setHours(0,0,0,0) == todaysDate.setHours(0,0,0,0)){
-      $("span").text("6");
+      $("span").text("5");
     }
     if (day7.setHours(0,0,0,0) == todaysDate.setHours(0,0,0,0)){
-      $("span").text("7");
+      $("span").text("6");
     }
     if (day8.setHours(0,0,0,0) == todaysDate.setHours(0,0,0,0)){
-      $("span").text("8");
+      $("span").text("7");
     }
     if (day9.setHours(0,0,0,0) == todaysDate.setHours(0,0,0,0)){
-      $("span").text("9");
+      $("span").text("8");
     }
     if (day10.setHours(0,0,0,0) == todaysDate.setHours(0,0,0,0)){
-      $("span").text("10");
+      $("span").text("9");
     }
     if (day11.setHours(0,0,0,0) == todaysDate.setHours(0,0,0,0)){
-      $("span").text("11");
+      $("span").text("10");
     }
     if (day12.setHours(0,0,0,0) == todaysDate.setHours(0,0,0,0)){
-      $("span").text("12");
+      $("span").text("11");
     }
     if (day13.setHours(0,0,0,0) == todaysDate.setHours(0,0,0,0)){
-      $("span").text("13");
+      $("span").text("12");
     }
     if (day14.setHours(0,0,0,0) == todaysDate.setHours(0,0,0,0)){
-      $("span").text("14");
+      $("span").text("13");
     }
   </script>
 </html>
