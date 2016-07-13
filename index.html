@@ -68,7 +68,7 @@
       justify-content: flex-start;
     }
     .list-group{
-      font-size: 18px;
+      font-size: 15px;
       border-bottom: none !important;
       border-left: none !important;
     }
@@ -203,6 +203,49 @@
       }
     };
 
+    var one = {
+      "a":{
+        "time": "7:30am-8:30am",
+        "description": "Breakfast",
+        "location": "Dining Hall"
+      },
+      "b":{
+        "time": "9:00am-12:00pm",
+        "description": "Intro to Cyber Security, Intro to Networking, Intro to VMWare/Kali ",
+        "location": "LCDI"
+      },
+      "c":{
+        "time": "12:00pm-1:00pm",
+        "description": "Lunch",
+        "location": "Dining Hall"
+      },
+      "d":{
+        "time": "1:30pm-4:30pm",
+        "description": "Sniffing of Clear text Protocols Symmetric Encryption Hashing/Integrity",
+        "location": "LCDI"
+      },
+      "e":{
+        "time": "4:30pm-5:00pm",
+        "description": "Wrap Up",
+        "location": "LCDI"
+      },
+      "f":{
+        "time": "5:30pm-6:30pm",
+        "description": "Dinner",
+        "location": "Dining Hall"
+      },
+      "g":{
+        "time": "7:00pm-11:00pm",
+        "description": "Dorm Time",
+        "location": "Butler Hall"
+      },
+      "h":{
+        "time": "11:00pm",
+        "description": "Lights Out",
+        "location": "Butler Hall"
+      }
+    };
+
     var today = {};
 
     if(todaysDate < day1){
@@ -220,6 +263,10 @@
     }
     if (day2.setHours(0,0,0,0) == todaysDate.setHours(0,0,0,0)){
       $("span").text("1");
+      Object.keys(one).forEach(function(key){
+         console.log(key, one[key]);
+         $(".list-group").append("<a href='#' class='list-group-item'><i class='fa fa-clock-o' aria-hidden='true'></i> " + one[key].time + " <br> " + one[key].description + " <br> <i class='fa fa-map-marker' aria-hidden='true'></i> " + one[key].location + " </a>");
+      });
     }
     if (day3.setHours(0,0,0,0) == todaysDate.setHours(0,0,0,0)){
       $("span").text("2");
