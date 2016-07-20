@@ -283,6 +283,48 @@
         "location": "Butler Hall"
       }
     };
+	var three = {
+      "a":{
+        "time": "7:30am-8:30am",
+        "description": "Breakfast",
+        "location": "Dining Hall"
+      },
+      "b":{
+        "time": "9:00am-12:00pm",
+        "description": "Kill Chain - Weaponization and Delivery, Intro to Metasploit, Shells, msfconsole",
+        "location": "LCDI"
+      },
+      "c":{
+        "time": "12:00pm-1:00pm",
+        "description": "Lunch",
+        "location": "LCDI"
+      },
+      "d":{
+        "time": "1:30pm-4:30pm",
+        "description": "Cyber Terminology and Ethics, Kill Chain Exploitation and Installation",
+        "location": "LCDI"
+      },
+      "f":{
+        "time": "5:30pm-7:30pm",
+        "description": "Church St Hunt",
+        "location": "Church Street"
+      },
+      "g":{
+        "time": "7:00pm-9:00pm",
+        "description": "Dinner",
+        "location": "Butler"
+      },
+      "h":{
+        "time": "8:00pm-11:00pm",
+        "description": "Dorm Time",
+        "location": "Butler Hall"
+      },
+      "i":{
+        "time": "11:00pm",
+        "description": "Lights Out",
+        "location": "Butler Hall"
+      }
+    };
 
     var today = {};
 
@@ -315,6 +357,10 @@
     }
     if (day4.setHours(0,0,0,0) == todaysDate.setHours(0,0,0,0)){
       $("span").text("3");
+	  Object.keys(three).forEach(function(key){
+         console.log(key, three[key]);
+         $(".list-group").append("<a href='#' class='list-group-item'><i class='fa fa-clock-o' aria-hidden='true'></i> " + three[key].time + " <br> " + three[key].description + " <br> <i class='fa fa-map-marker' aria-hidden='true'></i> " + three[key].location + " </a>");
+      });
     }
     if (day5.setHours(0,0,0,0) == todaysDate.setHours(0,0,0,0)){
       $("span").text("4");
